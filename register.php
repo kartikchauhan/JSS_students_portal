@@ -12,7 +12,9 @@ if($user->isLoggedIn())
 $error_status = false;
 $name = '';
 $email = '';
+$student_id = '';
 $usernames_available = '';
+$branch = '';
 
 if(Input::exists('post'))
 {
@@ -45,6 +47,9 @@ if(Input::exists('post'))
         'email'    => true,
         'unique'   => 'users'
         ),
+        'branch'   => array(
+        'required' => true
+        ),
         'password'       => array(
         'required' => true,
         'min'      => 6,
@@ -66,6 +71,7 @@ if(Input::exists('post'))
                     'username' => Input::get('username'),
                     'student_id' => Input::get('student_id'),
                     'email'=> Input::get('email'),
+                    'branch'=> Input::get('branch'),
                     'password'=> Hash::make(Input::get('password'), $salt),
                     'salt' => $salt,
                     'created_on' => Date('Y-m-d H:i:s'),
@@ -209,7 +215,7 @@ function generateUsernames($name)
                                         </div>
                                         <div class="input-field col s12">
                                             <i class="material-icons prefix">mode_edit</i>
-                                            <input type="number" name="student_id" id="student_id" />
+                                            <input type="number" name="student_id" id="student_id" value="<?php echo $student_id; ?>"/>
                                             <label for="student_id">Student Id</label>
                                         </div>
                                         <div class="input-field col s12">
@@ -219,15 +225,14 @@ function generateUsernames($name)
                                         </div>
                                         <div class="input-field col s12">
                                             <i class="material-icons prefix">mode_edit</i>
-                                            <select>
-                                                <option value="" disabled selected>Choose your branch</option>
+                                            <select name='branch' id='branch'>
+                                                <option value="<?php echo $branch; ?>" selected>Choose your branch</option>
                                                 <option value="cse">C.S.E.</option>
                                                 <option value="mechanical">Mechanical</option>
                                                 <option value="electrical">Electrical</option>
                                                 <option value="electronics">Electronics</option>
                                                 <option value="civil">Civil</option>
                                             </select>
-                                            <label>Branch</label>
                                         </div>
                                         <div class="input-field col s12">
                                             <i class="material-icons prefix">lock</i>

@@ -24,7 +24,7 @@ $GLOBALS['config'] = array(
 		'host'=>'127.0.0.1',	// neeed to be changed to $_SERVER['HTTP_HOST']
 		'user'=>'root',
 		'password'=>'',
-		'database'=>'blog'
+		'database'=>'jss'
 		),
 	'remember'=>array(
 		'cookie_name' => 'hash',
