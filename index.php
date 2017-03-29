@@ -10,11 +10,11 @@ require_once'Core/init.php';
     <link rel="preload" as="script" href="Includes/js/materialize.min.js">
     <link rel="preload" as="script" href="https://use.fontawesome.com/819d78ad52.js">
     <link rel="preload" as="script" href="Includes/js/jquery.min.js">
-    <link rel="preload" as="image" href="Includes/images/code5.jpeg">
+    <!-- <link rel="preload" as="image" href="Includes/images/code5.jpeg">
     <link rel="preload" as="image" href="Includes/images/code3.png">
     <link rel="preload" as="image" href="Includes/images/code2.png">
     <link rel="preload" as="image" href="Includes/images/code4.png">
-    <link rel="preload" as="image" href="Includes/images/code1.png">
+    <link rel="preload" as="image" href="Includes/images/code1.png"> -->
     <link rel="preload" as="style" href="http://fonts.googleapis.com/icon?family=Material+Icons">
     <title>
       Home
@@ -48,29 +48,6 @@ require_once'Core/init.php';
         {
             position: relative;
             top: 100vh;
-        }
-        #write-blog
-        {
-            position: relative !important;
-            top: -30% !important;
-            z-index: 3 !important;
-        }
-        .ghost-button
-        {
-            display: inline-block !important;
-            width: 200px !important;
-            padding: 8px !important;
-            color: #fff !important;
-            border: 2px solid #fff !important;
-            text-align: center !important;
-            outline: none !important;
-            text-decoration: none !important;
-        }
-        .ghost-button:hover, .ghost-button:active
-        {
-            background-color: #fff;
-            color: #000;
-            transition: background-color 0.3s ease-in, color 0.3s ease-in;
         }
         .blockquote
         {
@@ -110,24 +87,36 @@ require_once'Core/init.php';
     <div class="slider fullscreen" data-indicators="false">
         <ul class="slides">
             <li>
-                <img src="Includes/images/code3.png">
+                <img src="Includes/images/1.jpg">
             </li>
             <li>
-                <img src="Includes/images/code1.png"> 
+                <img src="Includes/images/2.jpg"> 
             </li>
             <li>
-                <img src="Includes/images/code2.png">
+                <img src="Includes/images/3.jpg">
             </li>
             <li>
-                <img src="Includes/images/code4.png">
+                <img src="Includes/images/4.jpg">
             </li>
             <li>
-                <img src="Includes/images/code5.jpeg">
+                <img src="Includes/images/5.jpg">
             </li>            
+            <li>
+                <img src="Includes/images/6.jpg">
+            </li>
+            <li>
+                <img src="Includes/images/7.jpg"> 
+            </li>
+            <li>
+                <img src="Includes/images/8.jpg">
+            </li>
+            <li>
+                <img src="Includes/images/9.jpg">
+            </li>
+            <li>
+                <img src="Includes/images/10.jpg">
+            </li>   
         </ul>
-        <div id="write-blog" class="center-align">
-            <a class="ghost-button" href="write_blog.php">WRITE A BLOG</a>
-        </div>
     </div>
     <div id="secondary-content">
         <div class="row">

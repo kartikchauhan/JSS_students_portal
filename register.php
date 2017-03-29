@@ -6,7 +6,7 @@ $user = new User;
 
 if($user->isLoggedIn())
 {
-	$user->logout();
+    $user->logout();
 }
 
 $error_status = false;
@@ -34,6 +34,12 @@ if(Input::exists('post'))
         'max'      => 25,
         'unique'   => 'users'
         ),
+        'student_id'       => array(
+        'required' => true,
+        'min'      => 5,
+        'max'      => 10,
+        'unique'   => 'users'
+        ),
         'email'            => array(
         'required' => true,
         'email'    => true,
@@ -58,6 +64,7 @@ if(Input::exists('post'))
                 $createUser = $user->create('users', array(
                     'name' => Input::get('name'),
                     'username' => Input::get('username'),
+                    'student_id' => Input::get('student_id'),
                     'email'=> Input::get('email'),
                     'password'=> Hash::make(Input::get('password'), $salt),
                     'salt' => $salt,
@@ -123,47 +130,51 @@ function generateUsernames($name)
 <!Doctype html>
 
 <html>
-	<head>
-        <link rel="preload" as="script" href="Includes/js/materialize.min.js">
+    <head>
+        <!-- <link rel="preload" as="script" href="Includes/js/materialize.min.js">
         <link rel="preload" as="script" href="Includes/js/jquery.min.js">
-        <link rel="preload" as="style" href="http://fonts.googleapis.com/icon?family=Material+Icons">
-		<title>
-			Register
-		</title>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-		<meta name="keywords" content="blog, technology, code, program, alorithms"/>
-		<meta name="description" content="We emphaisze on solving problems">
-		<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+        <link rel="preload" as="style" href="http://fonts.googleapis.com/icon?family=Material+Icons"> -->
+        <title>
+            Register
+        </title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta name="keywords" content="blog, technology, code, program, alorithms"/>
+        <meta name="description" content="We emphaisze on solving problems">
+        <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
 
-		<style>
-			body
-			{
-				position: absolute;
-				height: 100%;
-				width: 100%;
-				background-color: #eee;
-			}
-			#registration-form
-			{
-				position:relative;
-			  	top:50%;
-			    left:50%;
-				-ms-transform: translateX(-50%) translateY(-50%);
-				-webkit-transform: translate(-50%,-50%);
-				transform: translate(-50%,-50%);
-			}
-		</style>
+        <style>
+            body
+            {
+                position: absolute;
+                height: 100%;
+                width: 100%;
+                background-color: #eee;
+            }
+            #registration-form
+            {
+                position:relative;
+                top:50%;
+                left:50%;
+                -ms-transform: translateX(-50%) translateY(-50%);
+                -webkit-transform: translate(-50%,-50%);
+                transform: translate(-50%,-50%);
+            }
+            .card .card-content
+            {
+                padding: 0px !important;
+            }
+        </style>
 
-	</head>
-	<body>
-	
-		<div id="registration-form">
-			<h5 class="center-align condensed light">Register to TechWit</h5>
-			<div class="row">
-				<div class="col s12 l4 offset-l4">
-					<!-- <ul class="collection center-align z-depth-1 error"> -->
+    </head>
+    <body>
+    
+        <div id="registration-form">
+            <h5 class="center-align condensed light">Register to JSS Students Portal</h5>
+            <div class="row">
+                <div class="col s12 l4 offset-l4">
+                    <!-- <ul class="collection center-align z-depth-1 error"> -->
                         <?php
                             if($error_status)
                             {
@@ -173,65 +184,84 @@ function generateUsernames($name)
                                 </ul>";
                             }
                         ?>
-						<!-- <li class="collection-item red-text"></li> -->
-					<!-- </ul> -->
-					<div class="card">
-						<div class="card-content">
-							<div class="row">
-								<form class="col s12" action="" method="post">
-									<div class="row">
-										<div class="input-field col s12">
-											<i class="material-icons prefix">account_box</i>
-											<input type="text" name="name" id="name" value="<?php echo $name; ?>"/>
-											<label for="name">Name</label>
-										</div>
-										<div class="input-field col s12">
-											<i class="material-icons prefix">person</i>
-											<input type="text" name="username" id="username" />
-											<label for="username">Username</label>
+                        <!-- <li class="collection-item red-text"></li> -->
+                    <!-- </ul> -->
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="row">
+                                <form class="col s12" action="" method="post">
+                                    <div class="row">
+                                        <div class="input-field col s12">
+                                            <i class="material-icons prefix">account_box</i>
+                                            <input type="text" name="name" id="name" value="<?php echo $name; ?>"/>
+                                            <label for="name">Name</label>
+                                        </div>
+                                        <div class="input-field col s12">
+                                            <i class="material-icons prefix">person</i>
+                                            <input type="text" name="username" id="username" />
+                                            <label for="username">Username</label>
                                             <?php
                                                 if(!empty($usernames_available))
                                                 {
                                                     echo "<span class='red-text center-align'>".$usernames_available."</span>";
                                                 }
                                             ?>
-										</div>
-										<div class="center-align">
-											<span class="usernames-available red-text"></span>
-										</div>
-										<div class="input-field col s12">
-											<i class="material-icons prefix">email</i>
-											<input type="text" name="email" id="email" value="<?php echo $email ?>"/>
-											<label for="email">Email</label>
-										</div>
-										<div class="input-field col s12">
-											<i class="material-icons prefix">lock</i>
-											<input type="password" name="password" id="password" />
-											<label for="password">Password</label>
-										</div>
-										<div class="input-field col s12">
-											<i class="material-icons prefix">lock</i>
-											<input type="password" name="confirm_password" id="confirm_password" />
-											<label for="confirm_password">Confirm Password</label>
-										</div>
-										
-										<div class="input-field col s12">
-											<input type="hidden" name="_token" id="_token" value="<?php echo Token::generate(); ?>">
-										</div>
-										<input type="submit" class="btn waves-effect waves-light col s4 offset-s4" value="submit" id="submit">
-									</div>
-								</form>
-							</div>
-						</div>
-					</div>
-					<ul class="collection center-align z-depth-1">
-						<li class="collection-item">Already have an account? <a href="login.php">Login</a></li>
-					</ul>
-				</div>
-			</div>
-		</div>
-		
-		<script src="Includes/js/jquery.min.js"></script>
-		<script type="text/javascript" src="Includes/js/materialize.min.js"></script>
-	</body>
+                                        </div>
+                                        <div class="input-field col s12">
+                                            <i class="material-icons prefix">mode_edit</i>
+                                            <input type="number" name="student_id" id="student_id" />
+                                            <label for="student_id">Student Id</label>
+                                        </div>
+                                        <div class="input-field col s12">
+                                            <i class="material-icons prefix">email</i>
+                                            <input type="text" name="email" id="email" value="<?php echo $email ?>"/>
+                                            <label for="email">Email</label>
+                                        </div>
+                                        <div class="input-field col s12">
+                                            <i class="material-icons prefix">mode_edit</i>
+                                            <select>
+                                                <option value="" disabled selected>Choose your branch</option>
+                                                <option value="cse">C.S.E.</option>
+                                                <option value="mechanical">Mechanical</option>
+                                                <option value="electrical">Electrical</option>
+                                                <option value="electronics">Electronics</option>
+                                                <option value="civil">Civil</option>
+                                            </select>
+                                            <label>Branch</label>
+                                        </div>
+                                        <div class="input-field col s12">
+                                            <i class="material-icons prefix">lock</i>
+                                            <input type="password" name="password" id="password" />
+                                            <label for="password">Password</label>
+                                        </div>
+                                        <div class="input-field col s12">
+                                            <i class="material-icons prefix">lock</i>
+                                            <input type="password" name="confirm_password" id="confirm_password" />
+                                            <label for="confirm_password">Confirm Password</label>
+                                        </div>
+                                        
+                                        <div class="input-field col s12">
+                                            <input type="hidden" name="_token" id="_token" value="<?php echo Token::generate(); ?>">
+                                        </div>
+                                        <input type="submit" class="btn waves-effect waves-light col s4 offset-s4" value="submit" id="submit">
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <ul class="collection center-align z-depth-1">
+                        <li class="collection-item">Already have an account? <a href="login.php">Login</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <script src="Includes/js/jquery.min.js"></script>
+        <script type="text/javascript" src="Includes/js/materialize.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $('select').material_select();
+            });
+        </script>
+    </body>
 </html>
