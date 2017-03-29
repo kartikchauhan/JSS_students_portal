@@ -206,28 +206,155 @@ require_once'Core/init.php';
                       </div>
                 </div>            
             </div>
+            <div class="section">
+                <div class="center-align">
+                    <h5>Our Socities</h5>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s10 offset-s1">
+                    <div class="row">
+                        <div class="col s3">
+                            <div class="card">
+                                <div class="card-image">
+                                    <img src="Includes/images/17.png">
+                                    <span class="card-title"><a href="conatus.php" class="black-text">Conatus</a></span>
+                                </div>
+                                <div class="card-content">
+                                    <p>Leading the technical upfront, CONATUS, the Computer Science and Information Technology society<a href="conatus.php">...</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col s3">
+                            <div class="card">
+                                <div class="card-image">
+                                    <img src="Includes/images/19.png">
+                                    <span class="card-title"><a href="samveg.php" class="black-text">SAMVEG</a></span>
+                                </div>
+                                <div class="card-content">
+                                    <p>SAMVEG, the student society associated with the department of Mechanical Engineering, was formed on <a href="samveg.php">...</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col s3">
+                            <div class="card">
+                                <div class="card-image">
+                                    <img src="Includes/images/18.png">
+                                    <span class="card-title"><a href="phoenix.php" class="black-text">PHOENIX</a></span>
+                                </div>
+                                <div class="card-content">
+                                    <p>Phoenix, the student society associated with the department of Electronics and Communication Engineering<a href="phoenix.php">...</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col s3">
+                            <div class="card">
+                                <div class="card-image">
+                                    <img src="Includes/images/20.jpg">
+                                    <span class="card-title"><a href="horizon.php" class="black-text">Horizon</a></span>
+                                </div>
+                                <div class="card-content">
+                                    <p>“We are what we repeatedly do. Excellence, then, is not an act, but a habit." – Aristotle.<br>The logo aptly expresses the goals of <a href="horizon.php">...</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s3">
+                            <div class="card">
+                                <div class="card-image">
+                                    <img src="Includes/images/17.png">
+                                    <span class="card-title"><a href="csi.php" class="black-text">CSI</a></span>
+                                </div>
+                                <div class="card-content">
+                                    <p>Leading the technical upfront, CONATUS, the Computer Science and Information Technology society<a href="csi.php">...</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col s3">
+                            <div class="card">
+                                <div class="card-image">
+                                    <img src="Includes/images/19.png">
+                                    <span class="card-title"><a href="euphony.php" class="black-text">EUPHONY</a></span>
+                                </div>
+                                <div class="card-content">
+                                    <p>SAMVEG, the student society associated with the department of Mechanical Engineering, was formed on <a href="euphony.php">...</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col s3">
+                            <div class="card">
+                                <div class="card-image">
+                                    <img src="Includes/images/18.png">
+                                    <span class="card-title"><a href="goonj.php" class="black-text">GOONJ</a></span>
+                                </div>
+                                <div class="card-content">
+                                    <p>Phoenix, the student society associated with the department of Electronics and Communication Engineering<a href="goonj.php">...</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col s3">
+                            <div class="card">
+                                <div class="card-image">
+                                    <img src="Includes/images/20.jpg">
+                                    <span class="card-title"><a href="footprints.php" class="black-text">FOOT PRINTS</a></span>
+                                </div>
+                                <div class="card-content">
+                                    <p>“We are what we repeatedly do. Excellence, then, is not an act, but a habit." – Aristotle.<br>The logo aptly expresses the goals of <a href="footprints.php">...</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
+                </div>
+            </div>
+                
 
         <footer class="page-footer blue lighten-1">
             <div class="container">
                 <div class="row">
-                    <div class="col l6 s12">
-                        <h5 class="white-text">TechWit</h5>
-                        <p class="grey-text text-lighten-4">Publish your passions your way. Whether you'd like to share your knowledge, experiences or the latest tech news, create a unique and beautiful blog for free.</p>
-                    </div>
-                    <div class="col l4 offset-l2 s12">
-                        <h5 class="white-text">View Our Other Projects</h5>
+                    <div class="col s3">
+                        <h5 class="white-text">Links</h5>
                         <ul>
-                            <li><a class="grey-text text-lighten-3" href="http://www.silive.in" target="blank">silive.in</a></li>
-                            <li><a class="grey-text text-lighten-3" href="#!" target="blank">Blood Donation Campaign 2017</a></li>
-                            <li><a class="grey-text text-lighten-3" href="#!" target="blank">Table Tennis Tournament</a></li>
+                            <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
+                            <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
+                            <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
+                            <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
                         </ul>
                     </div>
+                    <div class="col s3">
+                        <h5 class="white-text">Links</h5>
+                        <ul>
+                            <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
+                            <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
+                            <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
+                            <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
+                        </ul>
+                    </div>
+                    <div class="col s3">
+                        <h5 class="white-text">Links</h5>
+                        <ul>
+                            <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
+                            <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
+                            <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
+                            <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
+                        </ul>
+                    </div>
+                    <div class="col s3">
+                        <h5 class="white-text">Links</h5>
+                        <ul>
+                            <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
+                            <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
+                            <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
+                            <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
+                        </ul>
+                    </div>
+
                 </div>
             </div>
             <div class="footer-copyright">
                 <div class="container center-align">
-                    © 2017 Software Incubator
+                    © 2017 JSS Academy
                 </div>
             </div>
         </footer>
@@ -284,75 +411,7 @@ require_once'Core/init.php';
                 });
             });
 
-            // $('.views').click(function(e){
-            //     e.preventDefault();
-            //     var blog_id = getBlogId(this);
-            //     var _token = getToken();
-
-            // });
-
-
-            // $('.likes, .dislikes').click(function(e){
-            //     e.preventDefault();
-            //     var object = $(this);
-                
-            //     var blog_id = getBlogId(this);
-            //     var _token = getToken();
-            //     var count = $(this).attr('data-attribute');
-            //     var className = getClassName(this);
-
-            //     $.ajax({
-            //         type: 'POST',
-            //         url: 'blog_attributes.php',
-            //         data: {blog_id: blog_id, _token: _token, field: className, count: count},
-            //         cache: false,
-            //         success: function(response)
-            //         {
-            //             var response = JSON.parse(response);
-            //             console.log(response);
-            //             $('#_token').attr('data-attribute', response._token);
-            //             if(response.error_status)
-            //             {
-            //                 consol.log(response.error);
-            //                 Materialize.toast(response.error, 5000, 'red');
-            //                 return false;
-            //             }
-            //             else
-            //             {
-            //                 $(object).attr('data-attribute', response.count);
-            //                 console.log(response.count);
-            //                 console.log($(object).parent().next().text(response.count));
-            //             }
-            //         }
-            //     });
-            // });
-   
-            // function getToken()
-            // {
-            //     return $('#_token').attr('data-attribute');
-            // } 
-
-            // function getBlogId(object)
-            // {
-            //     return $(object).parent().parent().attr('data-attribute');
-            // }
-
-            // function getClassName(object)
-            // {
-            //     var className = $(object).attr('class');
-            //     if(className === 'likes')
-            //     {
-            //         className = 'likes';
-            //     }
-            //     else if(className === 'dislikes')
-            //     {
-            //         className = 'dislikes';
-            //     }
-
-            //     return className;
-
-            // }
-
+            
         });
     </script>
 </body>
