@@ -119,192 +119,95 @@ require_once'Core/init.php';
         </ul>
     </div>
     <div id="secondary-content">
-        <div class="row">
-            <div class="col s12 l8">
-                <h5 class="center-align">Recent Blogs</h5>
-                <!-- <div class="content" id="content"> -->
-                    <?php
-                        $blogs = DB::getInstance()->sort('blogs', array('created_on', 'DESC'));
-                        $num_blogs = $blogs->count();
-                        $num_pages = ceil($num_blogs/5);
-                        if($num_blogs)  // show blogs if there are any, otherwise show message 'No blogs'
-                        {   
-                            echo "<div class='content' id='content'>";
-                            $blogs = $blogs->results();
-                            $blogs = array_slice($blogs, 0, 5);
-                            foreach($blogs as $blog)
-                            {
-                                $blog_tags = DB::getInstance()->get('blog_tags', array('blog_id', '=', $blog->id));
-                                $blog_tags = $blog_tags->results();
-                                $date=strtotime($blog->created_on); // changing the format of timestamp fetched from the database, converting it to milliseconds
-                                echo 
-                                    "<div class='row'>
-                                        <div class='col s12 hide-on-med-and-up'>
-                                            <div class='col s6'>
-                                                <blockquote>".
-                                                    date('M d', $date).' '.
-                                                    date('Y', $date).
-                                                "</blockquote>
-                                            </div>
-                                        </div>
-                                        <div class='col s2 l2 hide-on-small-only'>
-                                            <blockquote>".
-                                                date('M', $date)."<br>".
-                                                date('Y d', $date).
-                                            "</blockquote>
-                                        </div>
-                                        <div class='col s12 l10'>
-                                            <div class='row'>
-                                                <div class='col s12 l10'>
-                                                    <h5><a class='views' data-attribute='{$blog->views}' href='".Config::get('url/endpoint')."/view_blog.php?blog_id={$blog->id}'".">".ucfirst($blog->title)."</a></h5>
-                                                    <h6>".ucfirst($blog->description)."</h6><br>
-                                                </div>
-                                            </div>
-                                            <div class='row'>
-                                                <div class='measure-count' data-attribute='{$blog->id}'>
-                                                    <div class='col s2 l1'>
-                                                        <i class='fa fa-eye fa-2x' aria-hidden='true' style='color:grey'></i>
-                                                    </div>
-                                                    <div class='col s1 l1'>
-                                                        {$blog->views}
-                                                    </div>
-                                                    <div class='col s2 l1 offset-s1 offset-l1'>
-                                                        <i class='fa fa-thumbs-up fa-2x' aria-hidden='true' style='color:grey'></i>
-                                                    </div>
-                                                    <div class='col s1 l1'>
-                                                        {$blog->likes}
-                                                    </div>
-                                                    <div class='col s2 l1 offset-s1 offset-l1'>
-                                                        <i class='fa fa-thumbs-down fa-2x' aria-hidden='true' style='color:grey'></i>
-                                                    </div>
-                                                    <div class='col s1 l1'>
-                                                        {$blog->dislikes}
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class='row'>
-                                                <div class='col s12'>";
-                                                foreach($blog_tags as $blog_tag)
-                                                {
-                                                    echo "<div class='chip'>".$blog_tag->tags."</div>";
-                                                }
-                                                echo
-                                                "</div>
-                                            </div>
-                                            <div class='divider'></div>
-                                        </div>
-                                    </div>";
-                            }
-                            echo 
-                                "</div>
-                                <div class='section center-align'>
-                                    <ul class='pagination'>";
-                                            for($x = 1; $x <= $num_pages; $x++)
-                                            {
-                                                if($x == 1)
-                                                {
-                                                    echo "<li class='waves-effect pagination active'><a href='#' class='blog-pagination'>".$x."</a></li>";
-                                                }
-                                                else
-                                                {
-                                                    echo "<li class='waves-effect pagination'><a href='#' class='blog-pagination'>".$x."</a></li>";
-                                                }
-                                            }   
-                                    echo
-                                    "</ul>
-                                </div>";
-                        }
-                        else
-                        {
-                            echo "<div class='section center-align'>No blogs yet. <a href='write_blog.php'>Write the very first blog.</a></div>";
-                        }
-                    ?>
-            </div>
-            <div class="col s12 l4">
-                <div class="section">
-                    <h5 class="center-align">Recommended Blogs</h5>
+            <!-- <div class="row">
+                <div class="col s10 offset-s1">
+                    <div class="card horizontal">
+                        <div class="card-stacked">
+                            <div class="card-content">
+                                <p>I am a very simple card. I am good at containing small bits of information.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <?php
-                    $blogs = DB::getInstance()->sort('blogs', array('views', 'DESC'));
-                    if($blogs->count())
-                    {
-                        if($blogs = $blogs->fetchRecords(5))
-                        {
-                            foreach($blogs as $blog)
-                            {
-                                $blog_tags = DB::getInstance()->get('blog_tags', array('blog_id', '=', $blog->id));
-                                $blog_tags = $blog_tags->results();
-                                $date=strtotime($blog->created_on); // changing the format of timestamp fetched from the database, converting it to milliseconds
-                                echo 
-                                "<div class='row'>
-                                    <div class='col s12 hide-on-med-and-up'>
-                                        <div class='col s6'>
-                                            <blockquote>".
-                                                date('M d', $date).' '.
-                                                date('Y', $date).
-                                            "</blockquote>
-                                        </div>
-                                    </div>
-                                    <div class='col l2 hide-on-small-only'>
-                                        <blockquote class='blockquote'>".
-                                            date('M', $date)."<br>".
-                                            date('Y d', $date).
-                                        "</blockquote>
-                                    </div>
-                                    <div class='col s12 l10'>
-                                        <div class='row hide-on-med-and-up'>
-                                            <div class='col s12'>
-                                                <h5><a class='views' data-attribute='{$blog->views}' href='".Config::get('url/endpoint')."/view_blog.php?blog_id={$blog->id}'".">".ucfirst($blog->title)."</a></h5>
-                                                <h6>".ucfirst($blog->description)."</h6><br>
-                                            </div>
-                                        </div>
-                                        <div class='hide-on-small-only'>
-                                            <h6><a class='views' data-attribute='{$blog->views}' href='".Config::get('url/endpoint')."/view_blog.php?blog_id={$blog->id}'".">".ucfirst($blog->title)."</a></h6>
-                                            <p class='description'>".ucfirst($blog->description)."</p><br>
-                                        </div>
-                                        <div class='row'>
-                                            <div class='measure-count' data-attribute='{$blog->id}'>
-                                                <div class='col s2 l1'>
-                                                    <i class='fa fa-eye fa-lg' aria-hidden='true' style='color:grey'></i>
-                                                </div>
-                                                <div class='col s1 l1'>
-                                                    {$blog->views}
-                                                </div>
-                                                <div class='col s2 l1 offset-s1 offset-l1'>
-                                                    <i class='fa fa-thumbs-up fa-lg' aria-hidden='true' style='color:grey'></i>
-                                                </div>
-                                                <div class='col s1 l1'>
-                                                    {$blog->likes}
-                                                </div>
-                                                <div class='col s2 l1 offset-s1 offset-l1'>
-                                                    <i class='fa fa-thumbs-down fa-lg' aria-hidden='true' style='color:grey'></i>
-                                                </div>
-                                                <div class='col s1 l1'>
-                                                    {$blog->dislikes}
-                                                </div>
-                                            </div>
-                                        </div>";
-                                        foreach($blog_tags as $blog_tag)
-                                        {
-                                            echo "<div class='chip'>".$blog_tag->tags."</div>";
-                                        }
-                                        echo
-                                        "<div class='section hide-on-med-and-up'>
-                                            <div class='divider'></div>
-                                        </div>
-                                    </div>
-                                </div>";
-                            }
-                        }
-                    }
-                    else
-                    {
-                        echo 
-                        "<h6 class='center-align'>No blogs yet</h6>";
-                    }
-                ?>
+            </div> -->
+            <div class="row">
+                <div class="col s7 offset-s1">
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="Includes/images/11.jpg">
+                            <span class="card-title">JSS ACADEMY OF TECHNICAL EDUCATION, NOIDA</span>
+                        </div>
+                        <div class="card-content">
+                            <p>JSS Academy of Technical Education Noida (JSSATEN) is one of the leading Technical Institutions in the National Capital Region in the State of Uttar Pradesh. Established in the year 1998 by JSS Mahavidyapeetha, Noida, the Institution has set bench marks every year, and grown into an Institution of Excellence in Technical Education. Located in the central part of NOIDA, JSSATEN has become a household name for its excellence in Discipline, Teaching, Training and Placement. Today, JSSATEN has total student strength of over 4000, who are mentored by more than 250 Faculty Members. The Campus has finest accommodation for girls and boys.</p><br>
+                            <p>The Institution has MOUs with Colorado Heights University, Denver, USA for student exchange program. IBM Centre of Excellence, Nokia Mobile Innovation Labs, PLMCC and Schneider Electric Substation Automation Labs are additional facilities for the students to innovate new ideas. JSS Academy has Doctoral Programs in Computer Science & Engineering, Mechanical Engineering, Electronics & Communication Engineering and Physical Sciences under UP Technical University.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col s3">
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="Includes/images/12.gif">
+                            <span class="card-title">JSS MAHAVIDYAPEETHA</span>
+                        </div>
+                        <div class="card-content">
+                            <p>Established in the year 1954 the Jagadguru Sri Shivarathreeswara Mahavidyapeetha has been described by many eminent educationists as greater than a University, because under its aegis a child can begin its education in the kindergarten and proceed to earn a degree as well as a doctorate in several branches of learning. Simultaneously the Mahavidyapeetha has not neglected to strengthen the roots of our ancient knowledge, wisdom and culture and their application in the day-to-day life.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
+            <div class="row">
+                <div class="col s7 offset-s1">
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="Includes/images/16.jpg">
+                            <span class="card-title" style="color:black">MISSION</span>
+                        </div>
+                        <div class="card-content">
+                            <p>JSS Academy of Technical Education, Noida has implemented Outcome Based Education (OBE) in the Academy. JSSATEN is proud to mention that it has created necessary manpower and infrastructure to implement Outcome Based Education from the year 2014-15. So far the Technical Institutions have been imparting teaching through a traditional system where the learning outcomes of the students are not clearly measured. The ’Washington Accord’ emphasise on outcome based education. There is a need to develop a standard approach to match quality assurance for Engineering Programs. The graduating Engineers of the future will need to be evaluated in their outlook and experience and be ready for global opportunities. So, there is a need and challenge for all Technical Institutions to aid and empower the future students for global environment.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col s3">
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="Includes/images/14.png">
+                            <span class="card-title">VISION</span>
+                        </div>
+                        <div class="card-content">
+                            <p>Established in the year 1954 the Jagadguru Sri Shivarathreeswara Mahavidyapeetha has been described by many eminent educationists as greater than a University, because under its aegis a child can begin its education in the kindergarten and proceed to earn a degree as well as a doctorate in several branches of learning. Simultaneously the Mahavidyapeetha has not neglected to strengthen the roots of our ancient knowledge, wisdom and culture and their application in the day-to-day life.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s7 offset-s1">
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="Includes/images/15.jpg">
+                            <span class="card-title">PRINCIPAL'S DESK</span>
+                        </div>
+                        <div class="card-content">
+                            <p>Being recognised as one of the best Technical Institutions, JSS Academy of Technical Education, Noida (JSSATEN) is adopting cautiously to the changing demands of technical manpower at global level. The Academy envisions to become an Institution of Excellence in imparting quality Outcome Based Education that empowers young generation with knowledge, skills, research aptitude, ethics and moral values. The Institutions has been making efforts to strictly implement OBE by preparing the faculty members to a system, where they measure the progress and competencies of the student as they go through a course in each Semester.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col s3">
+                    <div class="card blue-grey darken-1">
+                        <div class="card-content white-text">
+                            <span class="card-title">IMPORTANT LINKS</span>
+                                <a href='' class='white-text'>Centenary Celebrations of His Holiness Jagadguru Dr. Sri Shivarathri Rajendra Mahaswamiji</a><br><br>
+                                <a href='' class='white-text'>Academic Calendar 2016-17</a><br><br>
+                                <a href='' class='white-text'>Image Gallery</a><br><br>
+                                <a href='' class='white-text'>Videos</a><br><br>
+                                <a href='' class='white-text'>Explore the College</a><br><br>
+                                <a href='' class='white-text'>Staff Directory</a><br><br>
+                                <a href='' class='white-text'>Department News Letter</a><br><br>
+                            </div>
+                      </div>
+                </div>            
+            </div>
+
+
         <footer class="page-footer blue lighten-1">
             <div class="container">
                 <div class="row">
