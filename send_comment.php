@@ -28,7 +28,7 @@ if(Input::exists('post'))
 				{
 					$comment = DB::getInstance()->insert('comments', array(
 					'comment' => Input::get('comment'),
-					'blog_id' => Input::get('blog_id'),
+					'page_id' => Input::get('page_id'),
 					'user_id' => $user_id
 					));
 
@@ -71,18 +71,8 @@ if(Input::exists('post'))
 																	<div class='col s12'>"
 																		.date('M d Y', $date).
 																	"</div>
-																</div>";
-																if($user->data()->id === $lastComment->user_id)
-																{
-																	$json['content'] = $json['content'].
-																	"<div class='row'>
-																		<div class='col s2 push-s4'>
-																			<a class='delete-comment'><i class='fa fa-trash fa-2x' aria-hidden='true' style='color: white'></i></a>
-																		</div>
-																	</div>";
-																}
-															$json['content'] = $json['content'].
-															"</div>
+																</div>
+															</div>
 														</div>
 													</div>
 												</div>

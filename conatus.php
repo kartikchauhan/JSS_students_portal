@@ -4,6 +4,15 @@ require_once'Core/init.php';
 
 $user = new User;
 
+$pageId = 1;
+if($user->isLoggedIn())
+{
+	$userLoggedIn = true;
+}
+else
+{
+	$userLoggedIn = false;
+}
 ?>
 
 <!DOCTYPE html>
@@ -17,13 +26,13 @@ $user = new User;
     	<link rel="preload" as="script" href="vendor/tinymce/tinymce/tinymce.min.js"> -->
 		<title>View Blog</title>
 		<meta property="og:type"          content="website" />
-		<meta property="og:title"         content="<?php echo $blog->data()->title; ?>" />
-		<meta property="og:description"   content="<?php echo $blog->data()->description; ?>" />
+		<meta property="og:title"         content="" />
+		<meta property="og:description"   content="" />
 		<meta property="og:image"         content="http://uvmbored.com/wp-content/uploads/2015/05/blog.jpg">
 		<meta name="twitter:card" content="summary" />
 		<meta name="twitter:site" content="@TechWit" />
-		<meta name="twitter:title" content="<?php echo $blog->data()->title; ?>" />
-		<meta name="twitter:description" content="<?php echo $blog->data()->description; ?>" />
+		<meta name="twitter:title" content="" />
+		<meta name="twitter:description" content="" />
 		<meta name="twitter:image:src" content="http://uvmbored.com/wp-content/uploads/2015/05/blog.jpg" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 		<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -125,87 +134,43 @@ $user = new User;
 				<div class="container">
 					<div class="section">
 						<div class="row">
-							<div class="col s12 l8">
-								<p class="flow-text"><?php echo $blog->data()->blog; ?></p>
-								<div class="section">
-									<div class="row">
-										<div class="col s6 offset-s1 l5 offset-l2">
-											<h6 class="center-align">Was this article helpful?</h6>
-										</div>									
-										<div class="_token" id="_token" data-attribute="<?php echo Token::generate(); ?>"></div>
-										<?php 
-											if($userLoggedIn)
-											{
-												if($blogStatusCount)
-												{
-													if($blogStatus == 1)
-													{
-														echo 
-														"<div class='col s1'>
-															<a class='likes' data-attribute=".$blog->data()->id."><i class='fa fa-thumbs-up fa-2x' aria-hidden='true' style='color: green'></i></a>
-														</div>
-														<div class='col s1 offset-s1 m1 l1'>
-															<a class='dislikes' data-attribute=".$blog->data()->id."><i class='fa fa-thumbs-down fa-2x' aria-hidden='true' style='color: grey'></i></a>
-														</div>";
-													}
-													else if($blogStatus == -1)
-													{
-														echo 
-														"<div class='col s1'>
-															<a class='likes' data-attribute=".$blog->data()->id."><i class='fa fa-thumbs-up fa-2x' aria-hidden='true' style='color: grey'></i></a>
-														</div>
-														<div class='col s1 offset-s1 m1 l1'>
-															<a class='dislikes' data-attribute=".$blog->data()->id."><i class='fa fa-thumbs-down fa-2x' aria-hidden='true' style='color: red'></i></a>
-														</div>";
-													}
-													else if($blogStatus == 0)
-													{
-														echo
-														"<div class='col s1'>
-															<a class='likes' data-attribute=".$blog->data()->id."><i class='fa fa-thumbs-up fa-2x' aria-hidden='true' style='color: grey'></i></a>
-														</div>
-														<div class='col s1 offset-s1 m1 l1'>
-															<a class='dislikes' data-attribute=".$blog->data()->id."><i class='fa fa-thumbs-down fa-2x' aria-hidden='true' style='color: grey'></i></a>
-														</div>";
-													}
-												}
-												else
-												{
-													echo
-													"<div class='col s1'>
-														<a class='likes' data-attribute=".$blog->data()->id."><i class='fa fa-thumbs-up fa-2x' aria-hidden='true' style='color: grey'></i></a>
-													</div>
-													<div class='col s1 offset-s1 m1 l1'>
-														<a class='dislikes' data-attribute=".$blog->data()->id."><i class='fa fa-thumbs-down fa-2x' aria-hidden='true' style='color: grey'></i></a>
-													</div>";
-												}
+							<div class="col s10">
+								<p>Leading the technical upfront, CONATUS, the Computer Science and Information Technology society of Ajay Kumar Garg Engineering College brings to the students the illumination of the knowledge glow in IT sphere with its marvelous events, workshops and seminars. Conatus means "impulsive force". It brings to students the vast unexplored "technical horizon" within their grasp hold. A few gems from the wide range of activities organized by Conatus are:<br><br>
 
-											}
-											else
-											{
-												echo
-												"<div class='col s1'>
-													<a class='likes-not-logged-in' data-attribute=".$blog->data()->id."><i class='fa fa-thumbs-up fa-2x' aria-hidden='true' style='color: grey'></i></a>
-												</div>
-												<div class='col s1 offset-s1 m1 l1'>
-													<a class='dislikes-not-logged-in' data-attribute=".$blog->data()->id."><i class='fa fa-thumbs-down fa-2x' aria-hidden='true' style='color: grey'></i></a>
-												</div>";
-											}
-										?>
-									</div>
+a. C and Java classes for the code masters in college and that too free of cost in order to spread technical knowledge.<br><br>
+
+b. Code Ratri, an overnight coding spree involving students from various colleges.<br><br>
+
+c. Various Seminars are organized about latest technology. Some of them include the big names like Microsoft's and IBM's seminar.<br><br>
+
+d. A workshop for providing professional level developer and design tools students was conducted to enlighten the students of AKGEC.<br><br>
+
+e. Other events by conatus are Crazy money, Warfare recon, Survivor Cup, Apt-diction, Tech-Chronies, Brain Torrento and many more. These events were not only for the students of AKGEC but also for students of the other colleges.<br><br>
+
+To add to the glory, Conatus publishes bi-monthly e-magazine 'CONOSCENZA'. Till now 11 editions of it have been published.<br><br>
+
+The odd semester 2011-12 witnessed the successful completion of the following events<br><br>
+
+1) Conducted C/C++ classes for BTech I Year students from 6th September 2011 to 4th November 2011. The batch size was 240. BTech III year CS and IT students took the classes.<br><br>
+2) Conducted Java language classes for BTech II Year students from 5th September 2011 to 5th November 2011. The batch size was 240. BTech III year CS and IT students took the classes.<br><br>
+3) The Great Mind Challenge (TGMC) from IBM was conducted on 7th September,2011. The aim of the seminar was to introduce the students to the TGMC project contest using IBM tools and technologies. About 200 students attended the seminar. 367 individual students have registered to the TGMC website. The society is in the process of organizing a one day workshop on IBM tools in the college.<br><br>
+4) The event “Tech Takshri” was conducted for BTech II year students in two rounds. The prelims round was conducted on 22nd September, 2011 with 120 teams participating. 8 teams qualified for the final round conducted on 24th September, 2011.<br><br>
+5) The CS and IT society CONATUS celebrated its 6th birthday on 13th October, 2011. The students celebrated the event by organizing a get together for the members of the society. The Director, Dean Student Welfare, HoD CSE , HoD IT and the faculty of CSE and IT were invited. The success story of the society from its incubation till date was presented through a power point presentation. The 11th edition of the e-magazine CONOSCENZA was released.<br><br>
+6) The even semester 2011-12 saw the completion of the event DA-AKG-CODE, a project development contest for I, II and III year students. The event was launched in September 2011. 42 teams had registered, each team comprising 2- 4 students. Of these 18 teams completed the projects. Two teams were declared as winners with I and II positions.</p>
+								<div class="section">
 									<div class="row">
 										<div class="col s12 l10 offset-l2">
 											<div class="row">
 												<div class="col s12 l5">
 													<div class="hide-on-med-and-up center-align">
-														<h5>Share this blog</h5>
+														<h5>Share about us</h5>
 													</div>
 													<div class="hide-on-small-only">
-														<h5>Share this blog</h5>
+														<h5>Share about us</h5>
 													</div>
 												</div>
 												<div class="col s4 l2">
-													<div class="g-plus" data-action="share" data-annotation="none" data-height="30" data-href="<?php echo Config::get('url/current_url'); ?>"></div>
+													<div class="g-plus" data-action="share" data-annotation="none" data-height="30" data-href="www.google.com"></div>
 												</div>
 												<div class="col s4 l2">
 													<a href="https://twitter.com/share" class="twitter-share-button" data-size="large" data-text="Check Out this blog" data-show-count="false">Tweet</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
@@ -231,9 +196,9 @@ $user = new User;
 							{
 								echo
 								"<form acion='' method='post'>
-									<label for='comment'>Add a Comment</label>
+									<label for='comment'>Add a Query</label>
 									<div class='section'>
-										<textarea class='materialize-textarea' id='comment' name='comment' data-attribute='".$blogId."'></textarea>
+										<textarea class='materialize-textarea' id='comment' name='comment' data-attribute='".$pageId."'></textarea>
 									</div>
 									<div class='row'>
 										<div class='col s12 l6'>
@@ -257,8 +222,8 @@ $user = new User;
 					<div class="row">
 				    	<div class="col s12 l8">
 				      		<ul class="tabs">
-				        		<li class="tab col s6 l4"><a href="" class='active blue-text popular_comments' id="popular_comments" data-attribute="<?php echo $blogId; ?>">Popular Comments</a></li>
-				        		<li class="tab col s6 l4"><a href="" class='blue-text new_comments' id="new_comments" data-attribute="<?php echo $blogId; ?>">New Comments</a></li>
+				        		<li class="tab col s6 l4"><a href="" class='active blue-text popular_comments' id="popular_comments" data-attribute="<?php echo $pageId; ?>">Popular Queries</a></li>
+				        		<li class="tab col s6 l4"><a href="" class='blue-text new_comments' id="new_comments" data-attribute="<?php echo $pageId; ?>">New Queries</a></li>
 				    	  	</ul>
 				    	</div>
 				  	</div>
@@ -267,7 +232,8 @@ $user = new User;
 							<div class="comment-section" id="comment-section">
 								<?php
 								// getting all the comments posted on the current blog in DESCENDING order
-								$comments = DB::getInstance()->joinSortComments(array('users', 'comments', 'blogs'), array('id', 'user_id', 'id', 'blog_id'), array('likes', 'DESC'), array('id', '=', $blogId), array('id', 'comment_id', 'created_on', 'comment_created_on', 'likes', 'comment_likes', 'dislikes', 'comment_dislikes'));
+								$comments = DB::getInstance()->showSortedComments('comments', array('page_id', '=', $pageId));
+								// $comments = DB::getInstance()->joinSortComments(array('users', 'comments', 'pages'), array('id', 'user_id', 'id', 'blog_id'), array('likes', 'DESC'), array('id', '=', $pageId), array('id', 'comment_id', 'created_on', 'comment_created_on', 'likes', 'comment_likes', 'dislikes', 'comment_dislikes'));
 
 								// if there's any comment on the current blog, show it otherwise print no comments
 								if($comments->count())
@@ -376,18 +342,8 @@ $user = new User;
 																			<div class='col s12'>"
 																				.date('M d Y', $date).
 																			"</div>
-																		</div>";
-																		if($user->data()->id === $comment->user_id)
-																		{
-																			echo
-																			"<div class='row'>
-																				<div class='col s2 push-s4'>
-																					<a class='delete-comment'><i class='fa fa-trash fa-2x' aria-hidden='true' style='color: white'></i></a>
-																				</div>
-																			</div>";
-																		}
-																	echo
-																	"</div>
+																		</div>																	
+																	</div>
 																</div>
 															</div>
 														</div>
@@ -484,18 +440,8 @@ $user = new User;
 																			<div class='col s12'>"
 																				.date('M d Y', $date).
 																			"</div>
-																		</div>";
-																		if($user->data()->id === $comment->user_id)
-																		{
-																			echo
-																			"<div class='row'>
-																				<div class='col s2 push-s4'>
-																					<a class='delete-comment'><i class='fa fa-trash fa-2x' aria-hidden='true' style='color: white'></i></a>
-																				</div>
-																			</div>";
-																		}
-																	echo
-																	"</div>
+																		</div>
+																	</div>
 																</div>
 															</div>
 														</div>
@@ -668,7 +614,7 @@ $user = new User;
 			</div>
 			<div class="footer-copyright">
 				<div class="container center-align">
-					© 2017 Software Incubator
+					© 2017 JSS Academy
 				</div>
 			</div>
 		</footer>

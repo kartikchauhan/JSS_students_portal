@@ -306,8 +306,22 @@ class DB
 		$value = $where[2];
 		$field = $fields[0];	// comments.created_on
 		$order = $fields[1];	// DESC
-		// SELECT *, comments.id as comment_id, comment.created_on AS comment_created_on, comments.likes as comment_likes, comments.dislikes as comment_dislikes FROM users Join comments ON users.id = comments.user_id Join blogs ON blogs.id = comments.blog_id WHERE blogs.id = 122 ORDER BY comments.created_on DESC
+		// SELECT *, comments.id as comment_id, comment.created_on AS comment_created_on, comments.likes as comment_likes, comments.dislikes as comment_dislikes FROM users Join comments ON users.id = comments.user_id Join blogs ON blogs.id = comments.blog_id WHERE blogs.id = 122 ORDER BY comments.created_on DESC		
 		$sql = "Select *, {$table2}.{$alias_field1} AS {$alias1}, {$table2}.{$alias_field2} AS {$alias2}, {$table2}.{$alias_field3} AS {$alias3}, {$table2}.{$alias_field4} AS {$alias4} FROM {$table1} JOIN {$table2} ON {$table1}.{$joinField1} = {$table2}.{$joinField2} JOIN {$table3} ON {$table3}.{$joinField3} = {$table2}.{$joinField4} WHERE {$table3}.{$where_field} {$operator} ? ORDER BY {$table2}.{$field} {$order}";
+		if(!$this->query($sql, array($value))->error())
+		{
+			return $this;
+		}
+		return false;
+	}
+
+	public function showSortedComments($table, $field = array())
+	{
+		$fieldName = $field[0];
+		$operator = $field[1];
+		$value = $field[2];
+		// $sql = "Select * FROM {$table} WHERE {$fieldName} = ? ORDER BY created_on DESC";
+		$sql = "SELECT * FROM {$table} ORDER BY created_on DESC";
 		if(!$this->query($sql, array($value))->error())
 		{
 			return $this;

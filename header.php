@@ -45,9 +45,9 @@
         "<ul id='dropdown1' class='dropdown-content hide-on-med-and-down' data-constrainwidth='false'>
             <li><a href='index.php' class='blue-text'>Home <i class='material-icons right'>home</i></a></li>
             <li class='divider'></li>
-            <li><a href='write_blog.php' class='blue-text'>Write Blog <i class='material-icons right'>mode_edit</i></a></li>
+            <li><a href='' class='blue-text'>Create Event<i class='material-icons right'>mode_edit</i></a></li>
             <li class='divider'></li>
-            <li><a href='authors_info.php' class='blue-text'>Edit Profile <i class='material-icons right'>account_circle</i></a></li>
+            <li><a href='' class='blue-text'>Achievements <i class='material-icons right'>account_circle</i></a></li>
             <li class='divider'></li>
             <li><a href='change_password.php' class='blue-text'>Change Password <i class='material-icons right'>settings</i></a></li>
             <li class='divider'></li>
@@ -73,8 +73,8 @@
                 </ul>
                 <ul class='side-nav' id='mobile-demo'>
                     <li><a href='index.php' class='blue-text'>Home <i class='material-icons right'>home</i></a></li>
-                    <li><a href='write_blog.php' class='blue-text'>Write Blog <i class='material-icons right'>mode_edit</i></a></li>
-                    <li><a href='authors_info.php' class='blue-text'>Edit Profile <i class='material-icons right'>account_circle</i></a></li>
+                    <li><a href='' class='blue-text'>Create Event <i class='material-icons right'>mode_edit</i></a></li>
+                    <li><a href='' class='blue-text'>Achievements<i class='material-icons right'>account_circle</i></a></li>
                     <li><a href='change_password.php' class='blue-text'>Change Password <i class='material-icons right'>settings</i></a></li>
                     <li><a href='logout.php' class='blue-text'>Logout <i class='material-icons right'>exit_to_app</i></a></li>
                 </ul>
